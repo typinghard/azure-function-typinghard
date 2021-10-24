@@ -14,7 +14,7 @@ variables:
   functionAppName: 'func-azure-typinghard'
 
   # Agent VM image name
-  vmImageName: 'ubuntu-20.04'
+  vmImageName: 'windows-latest'
 
   # Working Directory
   workingDirectory: '$(System.DefaultWorkingDirectory)/src'
