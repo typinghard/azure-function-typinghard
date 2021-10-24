@@ -1,1 +1,1 @@
-# typinghard-azure-functions
+# azure-function-typinghard
