@@ -33,7 +33,6 @@ stages:
     - task: DotNetCoreCLI@2
       displayName: Build
       inputs:
-        majorVersion: '6.0.x'
         command: 'build'
         projects: |
           $(workingDirectory)/*.csproj
