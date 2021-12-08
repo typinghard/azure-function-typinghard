@@ -14,7 +14,7 @@ namespace FuncAzureTypingHard.Controllers
         [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
         ILogger log)
         {
-            return new OkObjectResult("Azure Functions TypingHard - Ok - Ping");
+            return new OkObjectResult(new { data = "Azure Functions TypingHard - Ok - Ping" });
         }
 
     }
