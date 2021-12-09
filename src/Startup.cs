@@ -15,8 +15,8 @@ namespace FuncAzureTypingHard
             var configuration = builder.GetContext().Configuration;
 
             builder.Services.AddScoped<ChangeLogService>();
-            
-            builder.Services.AddAzureDevopsTracker(new DataBaseConfig(configuration["ConnectionStrings:DefaultConnection"], "adst"));
+
+            builder.Services.AddAzureDevopsTracker(new DataBaseConfig(configuration["ConnectionStrings:DefaultConnection"]));
         }
     }
 }
