@@ -1,11 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <AzureFunctionsVersion>v4</AzureFunctionsVersion>
+    <UserSecretsId>3bded90c-2316-4037-88ba-30e64644120d</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.5.0" />
+    <PackageReference Include="Azure.ResourceManager" Version="1.0.0-beta.5" />
+    <PackageReference Include="Azure.ResourceManager.Compute" Version="1.0.0-beta.3" />
+    <PackageReference Include="Azure.ResourceManager.Network" Version="1.0.0-beta.3" />
+    <PackageReference Include="Azure.ResourceManager.Resources" Version="1.0.0-beta.3" />
     <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Http" Version="3.0.12" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0" />
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\azure-devops-tracker\AzureDevopsTracker\AzureDevopsTracker.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
