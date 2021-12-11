@@ -3,7 +3,9 @@ using AzureDevopsTracker.Data;
 using AzureDevopsTracker.Services;
 using FuncAzureTypingHard;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 [assembly: FunctionsStartup(typeof(Startup))]
 namespace FuncAzureTypingHard
@@ -17,6 +19,14 @@ namespace FuncAzureTypingHard
             builder.Services.AddScoped<ChangeLogService>();
 
             builder.Services.AddAzureDevopsTracker(new DataBaseConfig(configuration["ConnectionStrings:DefaultConnection"]));
+        }
+
+        public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+        {
+            builder.ConfigurationBuilder
+                   .AddUserSecrets(Assembly.GetExecutingAssembly(), true)
+                   .AddEnvironmentVariables()
+                   .Build();
         }
     }
 }

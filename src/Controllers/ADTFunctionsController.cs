@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AzureDevopsTracker.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
@@ -10,6 +11,13 @@ namespace FuncAzureTypingHard.Controllers
 {
     internal class ADTFunctionsController
     {
+        private readonly IChangeLogService _changeLogService;
+
+        public ADTFunctionsController(IChangeLogService changeLogService)
+        {
+            _changeLogService = changeLogService;
+        }
+
         [FunctionName("pending-changelog-items")]
         public IActionResult GetChangelogItemsPending(
         [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
@@ -43,17 +51,11 @@ namespace FuncAzureTypingHard.Controllers
         [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
         ILogger log)
         {
-            try
-            {
+            var changeLog = _changeLogService.Release();
+            if (changeLog is null) new OkObjectResult("There's no WorkItems waiting for a ChangeLog");
 
- 
-            }
-            catch (Exception ex)
-            {
-                return new OkObjectResult(ex.Message);
-            }
-
-            return new OkObjectResult(HttpStatusCode.OK);
+            var message = _changeLogService.SendToMessengers(changeLog);
+            return new OkObjectResult(message);
         }
     }
 }
