@@ -52,7 +52,7 @@ namespace FuncAzureTypingHard.Controllers
         ILogger log)
         {
             var changeLog = _changeLogService.Release();
-            if (changeLog is null) new OkObjectResult("There's no WorkItems waiting for a ChangeLog");
+            if (changeLog is null) return new OkObjectResult("There's no WorkItems waiting for a ChangeLog");
 
             var message = _changeLogService.SendToMessengers(changeLog);
             return new OkObjectResult(message);
