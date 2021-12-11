@@ -48,7 +48,7 @@ namespace FuncAzureTypingHard.Controllers
 
         [FunctionName("release-changelog")]
         public IActionResult ReleaseChangelog(
-        [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
+        [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
         ILogger log)
         {
             var changeLog = _changeLogService.Release();
