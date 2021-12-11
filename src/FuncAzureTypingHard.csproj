@@ -5,8 +5,11 @@
 		<UserSecretsId>aeee72f4-77ac-49e9-a1e6-b6bd9800d54e</UserSecretsId>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="AzureDevOpsTracker" Version="1.1.1-alpha" />
+		<PackageReference Include="Azure.Identity" Version="1.5.0" />
+		<PackageReference Include="Azure.ResourceManager" Version="1.0.0-beta.6" />
+		<PackageReference Include="AzureDevOpsTracker" Version="1.1.2-alpha" />
 		<PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
+		<PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="3.13.1-preview" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="3.1.21" />
 		<PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.13" />
 	</ItemGroup>
