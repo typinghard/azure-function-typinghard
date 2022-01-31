@@ -1,5 +1,6 @@
 ﻿using AzureDevopsTracker.Configurations;
 using AzureDevopsTracker.Data;
+using AzureDevopsTracker.Integrations;
 using AzureDevopsTracker.Services;
 using FuncAzureTypingHard;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
@@ -18,7 +19,8 @@ namespace FuncAzureTypingHard
 
             builder.Services.AddScoped<ChangeLogService>();
 
-            builder.Services.AddAzureDevopsTracker(new DataBaseConfig(configuration["ConnectionStrings:DefaultConnection"]));
+            builder.Services.AddAzureDevopsTracker(new DataBaseConfig(configuration["ConnectionStrings:DefaultConnection"]), 
+                                                   new MessageConfig(EMessengers.DISCORD, configuration["AzureDevOpsTracker:DiscordIntegrationUrl"]));
         }
 
         public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
